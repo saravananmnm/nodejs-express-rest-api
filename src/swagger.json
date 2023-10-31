@@ -136,6 +136,53 @@
           }
         }
       }
+    },
+
+    "/employees/getAllEmployee": {
+      "get": {
+        "summary": "Get all employees",
+        "responses": {
+          "200": {
+            "description": "A list of employees",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Employee"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },"/employees/addEmployee":{
+      "post": {
+        "summary": "Create a new employee",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The newly created employee",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -161,7 +208,32 @@
             "minimum": 0
           }
         }
+      },
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "designation": {
+            "type": "string"
+          },
+          "salary": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "city": {
+            "type": "string"
+          }
+        }
       }
     }
+
   }
 }
