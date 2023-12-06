@@ -25,6 +25,10 @@ const User = sequelize.define('users', {
             min: 0,
         },
     },
+    isactive:{
+        type:Sequelize.BOOLEAN,
+        allowNull:false,
+    }
 });
 
 module.exports = User;

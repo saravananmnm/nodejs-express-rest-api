@@ -23,7 +23,7 @@ router.get('/getAll', async (req, res) => {
 });
 
 // Get user by ID
-router.get('/users/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const user = await User.findByPk(req.params.id);
         if (!user) {
@@ -37,7 +37,7 @@ router.get('/users/:id', async (req, res) => {
 });
 
 // Update user by ID
-router.put('/users/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const [updatedRowsCount] = await User.update(req.body, {
             where: { id: req.params.id }
@@ -54,11 +54,11 @@ router.put('/users/:id', async (req, res) => {
 });
 
 // Delete user by ID
-router.delete('/users/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deletedRowsCount = await User.destroy({ where: { id: req.params.id } });
         if (deletedRowsCount === 0) {
-            res.status(404).json({ message: 'User not found.' });
+            res.status(404).json({ message: 'Employee not found.' });
         } else {
             res.json({ message: 'User deleted successfully.' });
         }
